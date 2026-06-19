@@ -37,17 +37,17 @@ public class ThreePhaseCoordinator {
                             List<ThreePhaseParticipant> participants,
                             FailurePoint failure) {
 
-        System.out.printf("%n╔══════════════════════════════════════╗%n");
+        System.out.printf("%n╔======================================╗%n");
         System.out.printf("║  3PC - transaction %-18s║%n", txId);
-        System.out.printf("╚══════════════════════════════════════╝%n");
+        System.out.printf("╚======================================╝%n");
 
         if (failure == FailurePoint.BEFORE_PREPARE) {
             simulateCrash("before sending PREPARE"); return;
         }
 
-        // ════════════════════════════════════════════════════════════════════
+        // ====================================================================
         // PHASE 1 - PREPARE (identical to 2PC Phase 1)
-        // ════════════════════════════════════════════════════════════════════
+        // ====================================================================
         System.out.printf("%n--- Phase 1: Prepare (identical to 2PC) ---%n");
         log.write(LogEntry.Type.PREPARE, txId);
 
@@ -60,9 +60,9 @@ public class ThreePhaseCoordinator {
             simulateCrash("after collecting votes"); return;
         }
 
-        // ════════════════════════════════════════════════════════════════════
+        // ====================================================================
         // PHASE 2 - PRECOMMIT (new in 3PC)
-        // ════════════════════════════════════════════════════════════════════
+        // ====================================================================
         System.out.printf("%n--- Phase 2: Pre-commit decision ---%n");
 
         if (!allReady) {
@@ -101,9 +101,9 @@ public class ThreePhaseCoordinator {
             return;
         }
 
-        // ════════════════════════════════════════════════════════════════════
+        // ====================================================================
         // PHASE 3 - COMMIT
-        // ════════════════════════════════════════════════════════════════════
+        // ====================================================================
         System.out.printf("%n--- Phase 3: Final commit ---%n");
 
         if (acks < requiredAcks) {

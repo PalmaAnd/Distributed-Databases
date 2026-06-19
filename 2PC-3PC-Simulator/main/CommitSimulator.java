@@ -34,7 +34,7 @@ import java.util.List;
  *          -> NO BLOCKING (compare with 2PC-3)
  *  3PC-4  Participant misses PRECOMMIT message, then recovers
  *
- * ═══════════════════════════════════════════════════════════════════════════
+ * ===========================================================================
  */
 public class CommitSimulator {
 
@@ -168,11 +168,11 @@ public class CommitSimulator {
         // ────────────────────────────────────────────────────────────────────
 
         System.out.printf("%n%n");
-        System.out.printf("╔══════════════════════════════════════════════════════════════════════╗%n");
+        System.out.printf("╔======================================================================╗%n");
         System.out.printf("║              2PC vs 3PC - Key Comparison                            ║%n");
-        System.out.printf("╠══════════════════════════════════════════════════════════════════════╣%n");
+        System.out.printf("╠======================================================================╣%n");
         System.out.printf("║ Scenario               │ 2PC outcome          │ 3PC outcome          ║%n");
-        System.out.printf("╠══════════════════════════════════════════════════════════════════════╣%n");
+        System.out.printf("╠======================================================================╣%n");
         System.out.printf("║ Happy path             │ commits              │ commits              ║%n");
         System.out.printf("║ One no vote            │ aborts               │ aborts               ║%n");
         System.out.printf("║ Coordinator crash      │ BLOCKS (all ready,   │ No block - sites     ║%n");
@@ -183,13 +183,13 @@ public class CommitSimulator {
         System.out.printf("║ Phase 1                │ prepare->ready/abort │ IDENTICAL            ║%n");
         System.out.printf("║ Log entry after Phase 1│ <ready T>            │ <ready T>            ║%n");
         System.out.printf("║ Log entry after Phase 2│ <commit/abort T>     │ <precommit/abort T>  ║%n");
-        System.out.printf("╚══════════════════════════════════════════════════════════════════════╝%n");
+        System.out.printf("╚======================================================================╝%n");
     }
 
     private static void scenario(String description) {
         System.out.printf("%n%n");
-        System.out.printf("══════════════════════════════════════════════════════%n");
+        System.out.printf("======================================================%n");
         System.out.printf("SCENARIO: %s%n", description);
-        System.out.printf("══════════════════════════════════════════════════════%n");
+        System.out.printf("======================================================%n");
     }
 }
